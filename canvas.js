@@ -113,7 +113,7 @@ function init() {
     for (let i = 0; i < 1000; i++) {
         let x = randomIntFromRange(0, canvas.width);
         let y = randomIntFromRange(0, canvas.width);
-        ballArray.push(new Ball(x, y, 10, 5, '#f7d58c'));
+        ballArray.push(new Ball(x, y, 10, 25, '#f7d58c'));
     }
 }
 
@@ -122,7 +122,7 @@ function init2() {
     for (let i = 0; i < 2000; i++) {
         let x = randomIntFromRange(0, canvas.width);
         let y = randomIntFromRange(0, canvas.width);
-        ballArray2.push(new Ball2(x, y, 10, 2, '#f7d58c'));
+        ballArray2.push(new Ball2(x, y, 10, 7, '#f7d896'));
     }
 }
 
