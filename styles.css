@@ -16,11 +16,11 @@ canvas {
 #myButton {
     z-index: 2;
     position: fixed;
-    bottom: 3vw;
+    bottom: 6vw;
     left: 40vw;
     /* padding: 10px; */
-    height: 15vw;
-    width: 15vw;
+    height: 20vw;
+    width: 20vw;
     background-color: #1A2040;
     color: white;
     border-radius: 50%;

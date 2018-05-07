@@ -16,8 +16,8 @@ const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
 const foamThicknessArray = [15, 30, 70];
 const foamThicknessArray2 = [20, 35, 75];
 
-var gravity = 2;
-var friction = 0.9;
+var gravity = 1.5;
+var friction = 0.8;
 var foamHeight = foamThicknessArray[Math.floor(Math.random()*foamThicknessArray.length)];
 var foamHeight2 = foamThicknessArray2[Math.floor(Math.random()*foamThicknessArray2.length)];
 
@@ -34,11 +34,6 @@ addEventListener('resize', () => {
     init();
     init2();
 })
-
-// document.getElementById("myButton").addEventListener("click", function(){
-//     init();
-//     init2(); 
-// });
 
 // Utility Functions
 function randomIntFromRange(min, max) {
@@ -110,9 +105,9 @@ function Ball2(x, y, dy, radius, color) {
 var ball;
 var ballArray = [];
 function init() {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 500; i++) {
         let x = randomIntFromRange(0, canvas.width);
-        let y = randomIntFromRange(0, canvas.width);
+        let y = randomIntFromRange(0, canvas.width) + (innerHeight / 4);
         ballArray.push(new Ball(x, y, 10, 25, '#f7d58c'));
     }
 }
@@ -121,8 +116,8 @@ var ballArray2 = [];
 function init2() {
     for (let i = 0; i < 2000; i++) {
         let x = randomIntFromRange(0, canvas.width);
-        let y = randomIntFromRange(0, canvas.width);
-        ballArray2.push(new Ball2(x, y, 10, 7, '#f7d896'));
+        let y = randomIntFromRange(0, canvas.width) + (innerHeight / 1.4);
+        ballArray2.push(new Ball2(x, y, 10, 10, '#f7d896'));
     }
 }
 
