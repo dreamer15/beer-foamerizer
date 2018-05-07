@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+* {
+    background-color:#FFD06B;
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+canvas {
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+}
+
+#myButton {
+    z-index: 2;
+    position: fixed;
+    bottom: 3vw;
+    left: 40vw;
+    /* padding: 10px; */
+    height: 15vw;
+    width: 15vw;
+    background-color: #1A2040;
+    color: white;
+    border-radius: 50%;
+    font-size: 3vw;
+    outline: none;
+    border: 1px solid black;
+}
