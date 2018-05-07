@@ -13,13 +13,15 @@ const mouse = {
 
 const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
 
-const foamThicknessArray = [15, 30, 70];
-const foamThicknessArray2 = [20, 35, 75];
+const foamThicknessArray = [25, 35];
+const foamThicknessArray2 = [35, 45];
+const foamThicknessArray3 = [45, 55];
 
 var gravity = 1.5;
 var friction = 0.8;
 var foamHeight = foamThicknessArray[Math.floor(Math.random()*foamThicknessArray.length)];
 var foamHeight2 = foamThicknessArray2[Math.floor(Math.random()*foamThicknessArray2.length)];
+var foamHeight3 = foamThicknessArray3[Math.floor(Math.random()*foamThicknessArray3.length)];
 
 // Event Listeners
 addEventListener('mousemove', event => {
@@ -33,6 +35,7 @@ addEventListener('resize', () => {
 
     init();
     init2();
+    init3()
 })
 
 // Utility Functions
@@ -41,6 +44,7 @@ function randomIntFromRange(min, max) {
 }
 
 // Objects
+//biggest
 function Ball(x, y, dy, radius, color) {
     this.x = x
     this.y = y
@@ -50,7 +54,7 @@ function Ball(x, y, dy, radius, color) {
     this.foamHeight = foamHeight;
 
     this.update = function() {
-        if(this.y < foamHeight) {
+        if(this.y < foamHeight + 5) {
             this.dy = -this.dy * friction;
         } else {
             this.dy += gravity;
@@ -80,7 +84,7 @@ function Ball2(x, y, dy, radius, color) {
     this.foamHeight2 = foamHeight2;
 
     this.update = function() {
-        if(this.y < this.foamHeight2) {
+        if(this.y < this.foamHeight2 + 20) {
             this.dy = -this.dy * friction;
         } else {
             this.dy += gravity;
@@ -101,6 +105,36 @@ function Ball2(x, y, dy, radius, color) {
     };
 }
 
+function Ball3(x, y, dy, radius, color) {
+    this.x = x
+    this.y = y
+    this.dy = dy;
+    this.radius = radius
+    this.color = color
+    this.foamHeight3 = foamHeight3;
+
+    this.update = function() {
+        if(this.y < this.foamHeight3 + 35) {
+            this.dy = -this.dy * friction;
+        } else {
+            this.dy += gravity;
+        }
+        //dy = velocity
+        this.y -= this.dy;
+        this.draw()
+    };
+
+    this.draw = function() {
+        c.beginPath()
+        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+        c.fillStyle = this.color;
+        c.fill();
+        c.strokeStyle = '#D1C4BE';
+        c.stroke();
+        c.closePath();
+    };
+}
+
 // Implementation
 var ball;
 var ballArray = [];
@@ -108,16 +142,25 @@ function init() {
     for (let i = 0; i < 500; i++) {
         let x = randomIntFromRange(0, canvas.width);
         let y = randomIntFromRange(0, canvas.width) + (innerHeight / 4);
-        ballArray.push(new Ball(x, y, 10, 25, '#f7d58c'));
+        ballArray.push(new Ball(x, y, 10, 15, '#f7d58c'));
     }
 }
 
 var ballArray2 = [];
 function init2() {
-    for (let i = 0; i < 2000; i++) {
+    for (let i = 0; i < 1000; i++) {
         let x = randomIntFromRange(0, canvas.width);
         let y = randomIntFromRange(0, canvas.width) + (innerHeight / 1.4);
-        ballArray2.push(new Ball2(x, y, 10, 10, '#f7d896'));
+        ballArray2.push(new Ball2(x, y, 10, 7, '#f7d58c'));
+    }
+}
+
+var ballArray3 = [];
+function init3() {
+    for (let i = 0; i < 2000; i++) {
+        let x = randomIntFromRange(0, canvas.width);
+        let y = randomIntFromRange(0, canvas.width) + (innerHeight / 6);
+        ballArray3.push(new Ball3(x, y, 10, 3, '#f7d58c'));
     }
 }
 
@@ -137,8 +180,16 @@ function animate() {
         element.update();  
         
     }
+
+    for (let i = 0; i < ballArray3.length; i++) {
+        const element = ballArray3[i];
+        element.update();  
+        
+    }
 }
 
-init()
-init2()
 animate()
+// init3()
+init2()
+init()
+init3()

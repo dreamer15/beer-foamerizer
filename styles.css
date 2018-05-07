@@ -21,10 +21,9 @@ canvas {
     /* padding: 10px; */
     height: 20vw;
     width: 20vw;
-    background-color: #1A2040;
-    color: white;
+    color: black;
     border-radius: 50%;
     font-size: 3vw;
     outline: none;
-    border: 1px solid black;
+    border: 10px solid black;
 }
