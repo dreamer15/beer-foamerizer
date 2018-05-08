@@ -11,17 +11,17 @@ const mouse = {
     y: innerHeight / 2
 }
 
-const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
+var gravity = 2.5;
+var friction = 0.7;
 
-const foamThicknessArray = [25, 35];
-const foamThicknessArray2 = [35, 45];
-const foamThicknessArray3 = [45, 55];
+//Sound
 
-var gravity = 1.5;
-var friction = 0.8;
-var foamHeight = foamThicknessArray[Math.floor(Math.random()*foamThicknessArray.length)];
-var foamHeight2 = foamThicknessArray2[Math.floor(Math.random()*foamThicknessArray2.length)];
-var foamHeight3 = foamThicknessArray3[Math.floor(Math.random()*foamThicknessArray3.length)];
+// var audio = new Audio(http://sfxcontent.s3.amazonaws.com/soundfx/Cork-Pop.mp3);
+
+function play() {
+    var audio = document.getElementById("audio");
+    audio.play();
+}
 
 // Event Listeners
 addEventListener('mousemove', event => {
@@ -35,8 +35,15 @@ addEventListener('resize', () => {
 
     init();
     init2();
-    init3()
+    init3();
 })
+
+document.getElementById("myButton").addEventListener("click", function(){
+    // audio.play();
+    init();
+    init2();
+    init3();
+});
 
 // Utility Functions
 function randomIntFromRange(min, max) {
@@ -51,10 +58,10 @@ function Ball(x, y, dy, radius, color) {
     this.dy = dy;
     this.radius = radius
     this.color = color
-    this.foamHeight = foamHeight;
+    // this.foamHeight = foamHeight;
 
     this.update = function() {
-        if(this.y < foamHeight + 5) {
+        if(this.y < -20) {
             this.dy = -this.dy * friction;
         } else {
             this.dy += gravity;
@@ -67,8 +74,8 @@ function Ball(x, y, dy, radius, color) {
     this.draw = function() {
         c.beginPath()
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-        c.fillStyle = this.color;
-        c.fill();
+        // c.fillStyle = this.color;
+        // c.fill();
         c.strokeStyle = 'white';
         c.stroke();
         c.closePath();
@@ -81,10 +88,10 @@ function Ball2(x, y, dy, radius, color) {
     this.dy = dy;
     this.radius = radius
     this.color = color
-    this.foamHeight2 = foamHeight2;
+    // this.foamHeight2 = foamHeight2;
 
     this.update = function() {
-        if(this.y < this.foamHeight2 + 20) {
+        if(this.y < -20) {
             this.dy = -this.dy * friction;
         } else {
             this.dy += gravity;
@@ -97,8 +104,8 @@ function Ball2(x, y, dy, radius, color) {
     this.draw = function() {
         c.beginPath()
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-        c.fillStyle = this.color;
-        c.fill();
+        // c.fillStyle = this.color;
+        // c.fill();
         c.strokeStyle = 'white';
         c.stroke();
         c.closePath();
@@ -111,10 +118,10 @@ function Ball3(x, y, dy, radius, color) {
     this.dy = dy;
     this.radius = radius
     this.color = color
-    this.foamHeight3 = foamHeight3;
+    // this.foamHeight3 = foamHeight3;
 
     this.update = function() {
-        if(this.y < this.foamHeight3 + 35) {
+        if(this.y < -20) {
             this.dy = -this.dy * friction;
         } else {
             this.dy += gravity;
@@ -127,8 +134,8 @@ function Ball3(x, y, dy, radius, color) {
     this.draw = function() {
         c.beginPath()
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-        c.fillStyle = this.color;
-        c.fill();
+        // c.fillStyle = this.color;
+        // c.fill();
         c.strokeStyle = '#D1C4BE';
         c.stroke();
         c.closePath();
@@ -172,24 +179,26 @@ function animate() {
     for (let i = 0; i < ballArray.length; i++) {
         const element = ballArray[i];
         element.update();  
-        
     }
 
     for (let i = 0; i < ballArray2.length; i++) {
         const element = ballArray2[i];
         element.update();  
-        
     }
 
     for (let i = 0; i < ballArray3.length; i++) {
         const element = ballArray3[i];
         element.update();  
-        
     }
 }
 
+
+
+
+
+
+
 animate()
-// init3()
 init2()
 init()
 init3()
